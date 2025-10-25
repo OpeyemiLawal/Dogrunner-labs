@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://b83c7vr1bytng"]
+
+[ext_resource type="PackedScene" uid="uid://be345k1jmdr6p" path="res://Scene/dog.tscn" id="1_yjfpt"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gtdwt"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_yjfpt"]
+sky_material = SubResource("ProceduralSkyMaterial_gtdwt")
+
+[sub_resource type="Environment" id="Environment_i0f4b"]
+background_mode = 2
+sky = SubResource("Sky_yjfpt")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_dxec3"]
+size = Vector3(30, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x02iy"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ktfn"]
+size = Vector3(115, 20, 1)
+
+[node name="Scene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i0f4b")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Enviroment" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-07, 0, 0.1, 0, 0.1, 0, -10, 0, -4.371139e-09, 0, 0, 0)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Enviroment"]
+transform = Transform3D(3.7490795, 0, 0, 0, 0.6690229, 0, 0, 0, 1, 0, -0.40594673, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_dxec3")
+material = SubResource("StandardMaterial3D_x02iy")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.092819214, 5.7485065, 49.60434)
+use_collision = true
+mesh = SubResource("BoxMesh_0ktfn")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.092819214, 5.7485065, -54.108185)
+use_collision = true
+mesh = SubResource("BoxMesh_0ktfn")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_yjfpt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04021597, 0.027759314, 386.83673)
