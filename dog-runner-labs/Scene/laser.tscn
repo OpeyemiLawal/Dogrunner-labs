@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=4 uid="uid://bpa8v0sny7lfd"]
+
+[ext_resource type="Script" uid="uid://btlv5hx740wg0" path="res://Scripts/laser.gd" id="1_2mc1n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3aor"]
+resource_name = "Laser"
+cull_mode = 2
+emission_enabled = true
+emission = Color(1, 0.25255266, 0.30468613, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a5vew"]
+_surfaces = [{
+"aabb": AABB(-0.97970176, 0.57950103, -0.9868993, 1.9594076, 38.187397, 1.9451213),
+"format": 34359742465,
+"index_count": 111,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABQAAAAIAAwAGAAQAAAAGAAMABgAHAAQAAAAIAAYABgAIAAcABQAIAAAACAAJAAcABQACAAoACAALAAkABQALAAgACwAMAAkADQAFAAoADQALAAUADQAKAA4ACwAPAAwADQAPAAsADwAQAAwAEQANAA4AEQAPAA0AEQAOABIAEwARABIAEwAPABEAEwASABQADwAVABAAEwAVAA8AFQAWABAAFwATABQAFwAVABMAFwAUABgAFQAZABYAFwAZABUAGQAYABYAGQAXABgA"),
+"name": "Laser",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 26,
+"vertex_data": PackedByteArray("d9LqPk4RG0IHtV+/weR2sy5aFD9q5ke/38u5Pi5aFD+yADG/4sIBNk4RG0JvpXy/1cu5vi5aFD+1ADG/nexPP04RG0L3hA+/5dHqvk4RG0ILtV+/toMkvy5aFD/IHOO+WexPv04RG0L8hA+/THFGvy5aFD8tw8C9t4MkPy5aFD/BHOO+vM16v04RG0IPoPO96Og6vy5aFD9pxY0+/816P04RG0L2n/O9THFGPy5aFD8Zw8C9Ujpsv04RG0LjLbM+6Y4Evy5aFD+boBU/lDpsP04RG0LhLbM+6Og6Py5aFD9nxY0+NIknP04RG0LCGz0/6o4EPy5aFD+aoBU/8Ignv04RG0LDGz0/Wls/vi5aFD9iF0I/0NlxPk4RG0IITnU/Wls/Pi5aFD9iF0I/xNhxvk4RG0IITnU/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p1gv0"]
+resource_name = "Sketchfab_Scene_Object_67"
+_surfaces = [{
+"aabb": AABB(-0.97970176, 0.57950103, -0.9868993, 1.9594076, 38.187397, 1.9451213),
+"attribute_data": PackedByteArray("VpesPvKEFT/+/38+JAYQP1aXrD7yhBU//v9/PiQGED9Wl6w+8oQVP1nRJj7yhBU//v9/PiQGED/TIcQ9Gr8kP4z3zj4bvyQ/gv2CPZY3Oj+fQN8+ljc6PxYimT02A1E/erfZPjYDUT/CoL8+GuljP3y+AD4a6WM/fPaWPvqUbj8JE1I++JRuPxYimT02A1E/fL4APhrpYz8WIpk9NgNRP3y+AD4a6WM/jPfOPhu/JD9Wl6w+8oQVP4z3zj4bvyQ/VpesPvKEFT+C/YI9ljc6PxYimT02A1E/gv2CPZY3Oj8WIpk9NgNRP59A3z6WNzo/jPfOPhu/JD+fQN8+ljc6P4z3zj4bvyQ/0yHEPRq/JD+C/YI9ljc6P9MhxD0avyQ/gv2CPZY3Oj96t9k+NgNRP59A3z6WNzo/erfZPjYDUT+fQN8+ljc6P1nRJj7yhBU/0yHEPRq/JD9Z0SY+8oQVP9MhxD0avyQ/wqC/PhrpYz96t9k+NgNRP8Kgvz4a6WM/erfZPjYDUT/+/38+JAYQP1nRJj7yhBU//v9/PiQGED9Z0SY+8oQVP3z2lj76lG4/wqC/PhrpYz989pY++pRuP8Kgvz4a6WM/CRNSPviUbj989pY++pRuPwkTUj74lG4/fPaWPvqUbj98vgA+GuljPwkTUj74lG4/fL4APhrpYz8JE1I++JRuPw=="),
+"format": 34359742487,
+"index_count": 111,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgAJAAgACgALAAkADAALAAoADQALAAwADQAOAAsADwAOAA0ADwAQAA4AEQASABMAEQAUABIAFQAWABcAFQAYABYAGQAaABsAGQAcABoAHQAeAB8AHQAgAB4AIQAiACMAIQAkACIAJQAmACcAJQAoACYAKQAqACsAKQAsACoALQAuAC8ALQAwAC4AMQAyADMAMQA0ADIANQA2ADcANQA4ADYAOQA6ADsAOQA8ADoAPQA+AD8APQBAAD4A"),
+"material": SubResource("StandardMaterial3D_w3aor"),
+"name": "Laser",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 65,
+"vertex_data": PackedByteArray("d9LqPk4RG0IHtV+/weR2sy5aFD9q5ke/38u5Pi5aFD+yADG/4sIBNk4RG0JvpXy/d9LqPk4RG0IHtV+/5dHqvk4RG0ILtV+/4sIBNk4RG0JvpXy/WexPv04RG0L8hA+/nexPP04RG0L3hA+/vM16v04RG0IPoPO9/816P04RG0L2n/O9Ujpsv04RG0LjLbM+lDpsP04RG0LhLbM+NIknP04RG0LCGz0/8Ignv04RG0LDGz0/0NlxPk4RG0IITnU/xNhxvk4RG0IITnU/Ujpsv04RG0LjLbM+6Y4Evy5aFD+boBU/6Og6vy5aFD9pxY0+8Ignv04RG0LDGz0/nexPP04RG0L3hA+/38u5Pi5aFD+yADG/t4MkPy5aFD/BHOO+d9LqPk4RG0IHtV+/vM16v04RG0IPoPO96Og6vy5aFD9pxY0+THFGvy5aFD8tw8C9Ujpsv04RG0LjLbM+/816P04RG0L2n/O9t4MkPy5aFD/BHOO+THFGPy5aFD8Zw8C9nexPP04RG0L3hA+/WexPv04RG0L8hA+/THFGvy5aFD8tw8C9toMkvy5aFD/IHOO+vM16v04RG0IPoPO9lDpsP04RG0LhLbM+THFGPy5aFD8Zw8C96Og6Py5aFD9nxY0+/816P04RG0L2n/O95dHqvk4RG0ILtV+/toMkvy5aFD/IHOO+1cu5vi5aFD+1ADG/WexPv04RG0L8hA+/NIknP04RG0LCGz0/6Og6Py5aFD9nxY0+6o4EPy5aFD+aoBU/lDpsP04RG0LhLbM+4sIBNk4RG0JvpXy/1cu5vi5aFD+1ADG/weR2sy5aFD9q5ke/5dHqvk4RG0ILtV+/0NlxPk4RG0IITnU/6o4EPy5aFD+aoBU/Wls/Pi5aFD9iF0I/NIknP04RG0LCGz0/xNhxvk4RG0IITnU/Wls/Pi5aFD9iF0I/Wls/vi5aFD9iF0I/0NlxPk4RG0IITnU/8Ignv04RG0LDGz0/Wls/vi5aFD9iF0I/6Y4Evy5aFD+boBU/xNhxvk4RG0IITnU/cf8zGf///79x/zMZ////v3H/Mxn///+/cf8zGf///7//f/7//v//v/9//v/+//+//3/+//7//7//f/7//v//v/9//v/+//+//3/+//7//7//f/7//v//v/9//v/+//+//3/+//7//7//f/7//v//v/9//v/+//+//3/+//7//7//f/7//v//v440hH////8/jjSEf////z+ONIR/////P440hH////8/hf/nO////7+F/+c7////v4X/5zv///+/hf/nO////79kDmZ/////P2QOZn////8/ZA5mf////z9kDmZ/////P3r/bVz///+/ev9tXP///796/21c////v3r/bVz///+/hABtXP///7+EAG1c////v4QAbVz///+/hABtXP///7+a8WZ/////P5rxZn////8/mvFmf////z+a8WZ/////P3kA5zv///+/eQDnO////795AOc7////v3kA5zv///+/cMuEf////z9wy4R/////P3DLhH////8/cMuEf////z+NADMZ////v40AMxn///+/jQAzGf///7+NADMZ////v+KrgH////8/4quAf////z/iq4B/////P+KrgH////8//39Uf////z//f1R/////P/9/VH////8//39Uf////z8cVIB/////PxxUgH////8/HFSAf////z8cVIB/////Pw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_a5vew")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2mc1n"]
+height = 5.279114
+radius = 0.15185547
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_2mc1n")
+
+[node name="Laser_37" type="Node3D" parent="."]
+transform = Transform3D(2.7251467e-16, -6.2344085e-09, 0.14262664, -0.14262664, -6.2344085e-09, 0, 6.2344085e-09, -0.14262664, -6.2344085e-09, 0.04350555, 0.16527581, 0.0012941546)
+
+[node name="Object_105" type="MeshInstance3D" parent="Laser_37"]
+mesh = SubResource("ArrayMesh_p1gv0")
+skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.42883706, -2.3455513, 0)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.3711395e-08, -1.0000001, 0, 1.0000001, -4.3711395e-08, 0, 8.4703295e-22, 0, 1, 3.6247942, 2.1285334, -0.03666258)
+shape = SubResource("CylinderShape3D_2mc1n")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(-1.2987935e-07, 0, 0.13262302, 0, 0.22549568, 0, -2.9712934, 0, -5.797136e-09, -0.18507862, 0, -3.0422091)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler3D" to="." method="_on_visible_on_screen_enabler_3d_screen_exited"]

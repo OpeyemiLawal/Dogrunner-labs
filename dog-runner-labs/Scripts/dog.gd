@@ -2,19 +2,34 @@ extends CharacterBody3D
 
 # Movement constants
 const LANE_DISTANCE = 3.0  # Distance between lanes
-const LANE_SWITCH_SPEED = 10.0  # Speed of lane transitions
-const FORWARD_SPEED = 20.0  # Constant forward movement speed
-const JUMP_VELOCITY = 12.0
+const LANE_SWITCH_SPEED = 8.0  # Optimized for performance
+var base_speed = 5.0  # Base forward speed (will increase with difficulty)
+const MAX_SPEED = 15.0  # Maximum speed cap
+const SPEED_INCREASE_INTERVAL = 30.0  # Increase speed every 5 seconds
+const SPEED_INCREMENT = 1.0  # How much to increase speed each interval
+var difficulty_timer = 0.0
+const JUMP_VELOCITY = 15.0
 const GRAVITY = 30.0
 const SLIDE_DURATION = 0.8  # How long the slide lasts
-
-# Lane positions
+# Double jump
+const MAX_JUMPS = 2
+var jumps_left = MAX_JUMPS
+signal health_changed(new_health: int, max_health: int)
+signal hit_effect  # Emitted when player takes damage for visual effects
+var max_health = 100
+var current_health = max_health
 enum Lane { LEFT = -1, CENTER = 0, RIGHT = 1 }
 var current_lane: Lane = Lane.CENTER
 var target_lane: Lane = Lane.CENTER
 
-# Movement state
+# Magnet power-up
+var magnet_active = false
+var magnet_timer = 0.0
+const MAGNET_DURATION = 40.0  # 40 seconds
+signal magnet_activated
+signal magnet_deactivated
 
+# Movement state
 var is_jumping = false
 var is_sliding = false
 var is_grounded = true
@@ -34,6 +49,9 @@ const CAMERA_SMOOTHING = 5.0  # How smoothly camera follows
 
 
 func _ready() -> void:
+	# Add to player group
+	add_to_group("player")
+	
 	# Initialize position
 	position.x = 0.0
 	position.y = 0.0
@@ -48,6 +66,8 @@ func _process(delta: float) -> void:
 	update_movement(delta)
 	update_slide_timer(delta)
 	update_animations()
+	increase_difficulty(delta)
+	update_magnet_timer(delta)
 
 func _physics_process(delta: float) -> void:
 	apply_physics(delta)
@@ -126,8 +146,9 @@ func move_right() -> void:
 		target_lane = Lane.CENTER
 
 func jump() -> void:
-	if is_grounded and not is_sliding:
+	if jumps_left > 0 and not is_sliding:
 		velocity.y = JUMP_VELOCITY
+		jumps_left -= 1
 		is_jumping = true
 		is_grounded = false
 		
@@ -135,7 +156,7 @@ func jump() -> void:
 		if animation_player:
 			animation_player.play("jump")
 		
-		print("Dog jumped!")
+		print("Dog jumped! Jumps left: ", jumps_left)
 
 func slide() -> void:
 	if is_grounded and not is_sliding:
@@ -162,7 +183,7 @@ func update_movement(delta: float) -> void:
 		current_lane = target_lane
 	
 	# Constant forward movement
-	position.z -= FORWARD_SPEED * delta
+	position.z -= base_speed * delta
 
 func apply_physics(delta: float) -> void:
 	# Apply gravity
@@ -178,6 +199,7 @@ func apply_physics(delta: float) -> void:
 		velocity.y = 0.0
 		is_grounded = true
 		is_jumping = false
+		jumps_left = MAX_JUMPS
 
 func update_slide_timer(delta: float) -> void:
 	if is_sliding:
@@ -216,3 +238,74 @@ func reset_position() -> void:
 	is_jumping = false
 	is_sliding = false
 	is_grounded = true
+	base_speed = 5.0  # Reset to initial speed
+	difficulty_timer = 0.0  # Reset difficulty timer
+	jumps_left = MAX_JUMPS  # Reset jumps
+	print("Player reset - difficulty reset")
+
+# ============================================
+# HEALTH SYSTEM
+# ============================================
+
+func take_damage(amount: int) -> void:
+	current_health = max(0, current_health - amount)
+	health_changed.emit(current_health, max_health)
+	hit_effect.emit()  # Visual effect
+	
+	if current_health <= 0:
+		die()
+	else:
+		print("Player took damage! Health: ", current_health)
+
+func heal(amount: int) -> void:
+	current_health = min(max_health, current_health + amount)
+	health_changed.emit(current_health, max_health)
+	print("Player healed! Health: ", current_health)
+
+func is_alive() -> bool:
+	return current_health > 0
+
+func die() -> void:
+	print("Player died! Reloading scene...")
+	get_tree().reload_current_scene()
+
+func increase_difficulty(delta: float) -> void:
+	difficulty_timer += delta
+	
+	# Increase speed every 5 seconds
+	if difficulty_timer >= SPEED_INCREASE_INTERVAL:
+		difficulty_timer = 0.0
+		
+		# Increase speed but cap at MAX_SPEED
+		if base_speed < MAX_SPEED:
+			base_speed += SPEED_INCREMENT
+			print("Difficulty increased! Speed now: ", base_speed)
+
+# ============================================
+# MAGNET POWER-UP SYSTEM
+# ============================================
+
+func update_magnet_timer(delta: float) -> void:
+	if magnet_active:
+		magnet_timer -= delta
+		if magnet_timer <= 0.0:
+			deactivate_magnet()
+
+func activate_magnet() -> void:
+	if not magnet_active:
+		magnet_active = true
+		magnet_timer = MAGNET_DURATION
+		magnet_activated.emit()
+		print("Magnet activated! Duration: ", MAGNET_DURATION, " seconds")
+
+func deactivate_magnet() -> void:
+	magnet_active = false
+	magnet_timer = 0.0
+	magnet_deactivated.emit()
+	print("Magnet deactivated!")
+
+func _on_magnet_collected() -> void:
+	activate_magnet()
+
+func is_magnet_active() -> bool:
+	return magnet_active

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=4 uid="uid://8vwrvkwwkb47"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8hsu"]
+resource_name = "lightning"
+cull_mode = 2
+albedo_color = Color(1, 0.79098386, 0, 1)
+roughness = 0.8583209
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mr342"]
+_surfaces = [{
+"aabb": AABB(-0.03161278, -0.010000003, -0.06887935, 0.06934345, 0.020000005, 0.13479184),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAgABAAQABQADAAAAAwAFAAQABgAAAAIAAAAGAAUAAgAEAAcABQAHAAQABgACAAgACAACAAcABgAJAAUABQAJAAcACgAGAAgACQAGAAoACgAIAAsACQAKAAsABwALAAgACQALAAcA"),
+"name": "lightning",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("Z3wBvQrXIzw44Ai8TLLfOw3XI7wg/YY9Z3wBvQrXI7w44Ai8TLLfOwfXIzwg/YY90sblugvXI7zQnU480sblugnXIzzQnU48lxZyOwrXIzw44Ai8eYsaPQrXI7zQIxc8lxZyOwrXI7w44Ai8eYsaPQrXIzzQIxc8jQLFvA3XIzyeEI29jQLFvAfXI7yeEI29")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1b3rk"]
+resource_name = "Sketchfab_Scene_light_lightning_0"
+_surfaces = [{
+"aabb": AABB(-0.03161278, -0.010000003, -0.06887935, 0.06934345, 0.020000005, 0.13479184),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"),
+"format": 34359742487,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGgAbABgAGQAcABoAHAAZAB0AHgAfACAAIAAhAB4AIQAiAB4AIQAjACIA"),
+"material": SubResource("StandardMaterial3D_s8hsu"),
+"name": "lightning",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("Z3wBvQrXIzw44Ai8TLLfOw3XI7wg/YY9Z3wBvQrXI7w44Ai8TLLfOwfXIzwg/YY90sblugnXIzzQnU48eYsaPQrXI7zQIxc80sblugvXI7zQnU48eYsaPQrXIzzQIxc8jQLFvA3XIzyeEI29lxZyOwrXI7w44Ai8jQLFvAfXI7yeEI29lxZyOwrXIzw44Ai8TLLfOwfXIzwg/YY90sblugvXI7zQnU48TLLfOw3XI7wg/YY90sblugnXIzzQnU48eYsaPQrXIzzQIxc8jQLFvAfXI7yeEI29eYsaPQrXI7zQIxc8jQLFvA3XIzyeEI29lxZyOwrXIzw44Ai8Z3wBvQrXI7w44Ai8lxZyOwrXI7w44Ai8Z3wBvQrXIzw44Ai8Z3wBvQrXIzw44Ai8lxZyOwrXIzw44Ai80sblugnXIzzQnU48TLLfOwfXIzwg/YY9eYsaPQrXIzzQIxc8jQLFvA3XIzyeEI29eYsaPQrXI7zQIxc8jQLFvAfXI7yeEI29lxZyOwrXI7w44Ai8Z3wBvQrXI7w44Ai80sblugvXI7zQnU48TLLfOw3XI7wg/YY9pyv/f////z+nK/9/////P6cr/3////8/pyv/f////z8biv9/////PxuK/3////8/G4r/f////z8biv9/////Pzoo/3////8/Oij/f////z86KP9/////Pzoo/3////8///++kf///7///76R////v///vpH///+///++kf///7///4e4////v///h7j///+///+HuP///7///4e4////v/////////+//////////7//////////v/////////+//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//38AAP///7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_mr342")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83jyx"]
+size = Vector3(7.036133, 11.292236, 2.8952026)
+
+[node name="Area3D" type="Area3D"]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0.44824934, 0)
+
+[node name="light" type="Node3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -1.1920931e-05, 100, 0, -100, -1.1920931e-05, 0, 0, 0)
+
+[node name="light_lightning_0" type="MeshInstance3D" parent="light"]
+mesh = SubResource("ArrayMesh_1b3rk")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018066406, 0.9197998, -0.36538696)
+shape = SubResource("BoxShape3D_83jyx")

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0i27652r7pem"]
-
-[ext_resource type="PackedScene" uid="uid://bsxvijqgkyubn" path="res://Assets/Enviroment/subway_surfers.glb" id="1_k0nmq"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_k0nmq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23144734, 1.1920929e-07, -1.0256791)

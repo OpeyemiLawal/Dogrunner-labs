@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbqhwcmig008f"]
+
+[ext_resource type="Script" uid="uid://bkd2febwe1tyr" path="res://Scripts/world_environment.gd" id="1_world"]
+[ext_resource type="PackedScene" uid="uid://be345k1jmdr6p" path="res://Scene/dog.tscn" id="2_dog"]
+[ext_resource type="Script" uid="uid://ccq0trd10c0ld" path="res://Scripts/camera_controller.gd" id="3_camera"]
+[ext_resource type="Script" uid="uid://b81fip5d7un4i" path="res://Scripts/level_spawner.gd" id="4_spawner"]
+[ext_resource type="Script" uid="uid://dn4eiqwv0fl2m" path="res://Scripts/hud.gd" id="5_hud"]
+[ext_resource type="Texture2D" uid="uid://cjjw5kcroj8ra" path="res://Assets/GUI/HUD/EmptyBar.png" id="6_empty_bar"]
+[ext_resource type="Texture2D" uid="uid://du8wousjcnn13" path="res://Assets/GUI/HUD/RedBar.png" id="7_red_bar"]
+[ext_resource type="Texture2D" uid="uid://duct7i8js1cvr" path="res://Assets/GUI/HUD/magnet.png" id="8_magnet_icon"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75buv"]
+albedo_color = Color(0.49019608, 0.49019608, 0.49019608, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_c2iwn"]
+material = SubResource("StandardMaterial3D_75buv")
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="Node3D" parent="."]
+script = ExtResource("1_world")
+
+[node name="Dog" parent="." instance=ExtResource("2_dog")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0.5, 0)
+
+[node name="GameCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 4, 10)
+current = true
+fov = 70.0
+script = ExtResource("3_camera")
+
+[node name="LevelSpawner" type="Node3D" parent="."]
+script = ExtResource("4_spawner")
+obstacle_chance = 0.06
+magnet_chance = 0.1
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["hud"]]
+script = ExtResource("5_hud")
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthLabel" type="Label" parent="HUD/Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 43.0
+text = "Health: 100/100"
+horizontal_alignment = 1
+
+[node name="XYZLabel" type="Label" parent="HUD/Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 220.0
+offset_bottom = 73.0
+text = "$XYZ: 0"
+horizontal_alignment = 1
+
+[node name="DamageFlash" type="ColorRect" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0)
+
+[node name="XYZFlash" type="ColorRect" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.9, 0, 0)
+
+[node name="MagnetTimerBar" type="TextureProgressBar" parent="HUD/Control"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 550.0
+offset_right = 261.0
+offset_bottom = 578.0
+value = 100.0
+texture_under = ExtResource("6_empty_bar")
+texture_progress = ExtResource("7_red_bar")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="HUD/Control/MagnetTimerBar"]
+modulate = Color(0.21568628, 0.21568628, 0.21568628, 0.34901962)
+position = Vector2(-6.3751297, 7)
+scale = Vector2(45.301056, 39.99998)
+mesh = SubResource("SphereMesh_c2iwn")
+
+[node name="MagnetIcon" type="TextureRect" parent="HUD"]
+offset_left = 14.0
+offset_top = 525.0
+offset_right = 78.0
+offset_bottom = 589.0
+texture = ExtResource("8_magnet_icon")

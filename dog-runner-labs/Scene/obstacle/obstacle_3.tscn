@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dciaswr1vsj2e"]
+
+[ext_resource type="Script" uid="uid://cpo24rhijtytb" path="res://Scripts/obstacle/obstacle_3.gd" id="1_16kmh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tile"]
+size = Vector3(4, 0.5, 4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pit"]
+top_radius = 1.5
+bottom_radius = 1.5
+height = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pit"]
+size = Vector3(3.5, 2, 3.5)
+
+[node name="Obstacle3" type="Node3D"]
+script = ExtResource("1_16kmh")
+
+[node name="TileMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_tile")
+
+[node name="PitArea" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="PitMesh" type="MeshInstance3D" parent="PitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("CylinderMesh_pit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PitArea"]
+shape = SubResource("BoxShape3D_pit")

@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b83c7vr1bytng"]
+[gd_scene load_steps=10 format=3 uid="uid://d6l3prkn2r1d"]
 
-[ext_resource type="PackedScene" uid="uid://be345k1jmdr6p" path="res://Scene/dog.tscn" id="1_yjfpt"]
+[ext_resource type="PackedScene" uid="uid://be345k1jmdr6p" path="res://Scene/dog.tscn" id="2_dxec3"]
+[ext_resource type="PackedScene" uid="uid://csl1q67ueotl2" path="res://Scene/obstacle/obstacle_2.tscn" id="2_i0f4b"]
+[ext_resource type="Script" uid="uid://ccq0trd10c0ld" path="res://Scripts/camera_controller.gd" id="3_x02iy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gtdwt"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -51,5 +53,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.092819214, 5.7485065, -54.1
 use_collision = true
 mesh = SubResource("BoxMesh_0ktfn")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_yjfpt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04021597, 0.027759314, 386.83673)
+[node name="laser bot" parent="." instance=ExtResource("2_i0f4b")]
+transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09, -0.04021597, 0.027759314, 544.1544)
+
+[node name="Dog" parent="." instance=ExtResource("2_dxec3")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0.14557958, 0)
+
+[node name="GameCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 4, 10)
+current = true
+fov = 70.0
+script = ExtResource("3_x02iy")

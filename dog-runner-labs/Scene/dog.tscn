@@ -5460,7 +5460,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sr20n"]
-size = Vector3(0.3545227, 0.5378418, 1.0262451)
+size = Vector3(0.3545227, 0.571167, 1.0262451)
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("2_6bi0i")
@@ -5802,8 +5802,14 @@ libraries = {
 speed_scale = 1.75
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027511597, 0.2310791, -0.10357666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027511597, 0.31770384, -0.10357666)
 shape = SubResource("BoxShape3D_sr20n")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.93928605, 0.34313518, 0, -0.34313518, 0.93928605, -0.1188097, 1.5987213, 1.6786723)
+
+[node name="characterArea" type="Area3D" parent="." groups=["Dog"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="characterArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027511597, 0.31770384, -0.10357666)
+shape = SubResource("BoxShape3D_sr20n")

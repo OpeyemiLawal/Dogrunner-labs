@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c773skg7vbtey"]
+
+[ext_resource type="PackedScene" uid="uid://bkogq08imom63" path="res://Scene/level_spawner.tscn" id="1_01fhm"]
+[ext_resource type="PackedScene" uid="uid://be345k1jmdr6p" path="res://Scene/dog.tscn" id="2_pn03a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pn03a"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_5ycrs"]
+sky_material = SubResource("ProceduralSkyMaterial_pn03a")
+
+[sub_resource type="Environment" id="Environment_v03h0"]
+background_mode = 2
+sky = SubResource("Sky_5ycrs")
+tonemap_mode = 2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v03h0")
+
+[node name="LevelSpawner" parent="." instance=ExtResource("1_01fhm")]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_pn03a")]
